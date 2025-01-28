@@ -5,7 +5,7 @@ import instance from "@/middlewares";
 import HomeView from "@/views/HomeView.vue";
 import Register from "@/views/Auth/Register.vue";
 import Login from "@/views/Auth/Login.vue";
-import ProfileView from "@/views/ProfileView.vue";
+
 import ExercisesView from "@/views/Training/ExercisesView.vue";
 import WorkoutView from "@/views/Training/WorkoutView.vue";
 import ExercisesInWorkoutView from "@/views/Training/ExercisesInWorkoutView.vue";
@@ -29,12 +29,7 @@ const routes = [
     name: "login",
     component: Login,
   },
-  {
-    path: "/profile",
-    name: "profile",
-    component: ProfileView,
-    meta: { auth: true },
-  },
+
   {
     path: "/exercises",
     name: "exercises",
