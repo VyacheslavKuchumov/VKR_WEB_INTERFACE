@@ -19,9 +19,7 @@
           <v-list-item v-if="isAuth" to="/">
             <v-list-item-title>Главная</v-list-item-title>
           </v-list-item>
-          <v-list-item v-if="isAuth" to="/professions">
-            <v-list-item-title>Профессии</v-list-item-title>
-          </v-list-item>
+          
           <v-list-item v-if="isAuth" to="/okved">
             <v-list-item-title>ОКВЭД</v-list-item-title>
           </v-list-item>

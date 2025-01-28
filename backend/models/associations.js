@@ -1,7 +1,8 @@
 const { Auth } = require("./auths");
 const { User } = require("./users");
-const { Okved } = require("./okved");
+const { OkvedSection, OkvedClass, OkvedSubclass, OkvedGroup, OkvedSubgroup, OkvedActivity } = require("./okved");
 const { Profession } = require("./professions");
+
 
 
 // User and Auth
@@ -11,8 +12,22 @@ User.belongsTo(Auth, {
   as: "auth",
 });
 
-// // Establish many-to-many associations
-// Profession.belongsToMany(Okved, { through: "profession_okved",  foreignKey: 'profession_id' });
-// Okved.belongsToMany(Profession, { through: "profession_okved", foreignKey: 'okved_id' });
+// Раздел → Класс
+OkvedSection.hasMany(OkvedClass, { foreignKey: 'section_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+OkvedClass.belongsTo(OkvedSection, { foreignKey: 'section_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
-// Establish many-to-many associations
+// Класс → Подкласс
+OkvedClass.hasMany(OkvedSubclass, { foreignKey: 'class_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+OkvedSubclass.belongsTo(OkvedClass, { foreignKey: 'class_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+
+// Подкласс → Группа
+OkvedSubclass.hasMany(OkvedGroup, { foreignKey: 'subclass_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+OkvedGroup.belongsTo(OkvedSubclass, { foreignKey: 'subclass_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+
+// Группа → Подгруппа
+OkvedGroup.hasMany(OkvedSubgroup, { foreignKey: 'group_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+OkvedSubgroup.belongsTo(OkvedGroup, { foreignKey: 'group_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+
+// Подгруппа → Вид
+OkvedSubgroup.hasMany(OkvedActivity, { foreignKey: 'subgroup_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+OkvedActivity.belongsTo(OkvedSubgroup, { foreignKey: 'subgroup_id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
