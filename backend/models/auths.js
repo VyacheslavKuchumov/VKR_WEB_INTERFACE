@@ -28,7 +28,7 @@ const Auth = sequelize.define(
         },
     },
     {
-        tableName: 'Auths',
+        tableName: 'auths',
         timestamps: true,
     }
 )

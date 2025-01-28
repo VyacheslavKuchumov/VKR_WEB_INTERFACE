@@ -2,31 +2,31 @@ const { sequelize } = require("../connection");
 const { DataTypes } = require("sequelize");
 
 
-const User = sequelize.define(
-  "user",
+const Okved = sequelize.define(
+  "okved",
   {
-    id: {
+    okved_id: {
       type: DataTypes.BIGINT,
       autoIncrement: true,
       primaryKey: true,
     },
-    user_uid: {
-      type: DataTypes.UUID,
+    code: {
+      type: DataTypes.TEXT,
       unique: true,
     },
-    name: {
+    okved_name: {
       type: DataTypes.TEXT,
-    },
-    role: {
-      type: DataTypes.TEXT,
-    },
+      allowNull: false
+    }
+    
+    
   },
   {
-    tableName: "users",
-    timestamps: true,
+    tableName: "okved",
+    timestamps: false,
   },
 );
 
 
 
-module.exports = { User,};
+module.exports = { Okved };
