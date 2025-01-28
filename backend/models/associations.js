@@ -11,6 +11,8 @@ User.belongsTo(Auth, {
   as: "auth",
 });
 
+// // Establish many-to-many associations
+// Profession.belongsToMany(Okved, { through: "profession_okved",  foreignKey: 'profession_id' });
+// Okved.belongsToMany(Profession, { through: "profession_okved", foreignKey: 'okved_id' });
+
 // Establish many-to-many associations
-Profession.belongsToMany(Okved, { through: "profession_okved",  foreignKey: 'profession_id' });
-Okved.belongsToMany(Profession, { through: "profession_okved", foreignKey: 'okved_id' });

@@ -6,9 +6,8 @@ import HomeView from "@/views/HomeView.vue";
 import Register from "@/views/Auth/Register.vue";
 import Login from "@/views/Auth/Login.vue";
 
-import ExercisesView from "@/views/Training/ExercisesView.vue";
-import WorkoutView from "@/views/Training/WorkoutView.vue";
-import ExercisesInWorkoutView from "@/views/Training/ExercisesInWorkoutView.vue";
+import OkvedView from "@/views/OkvedView.vue";
+import ProfessionsView from "@/views/ProfessionsView.vue";
 
 
 
@@ -29,25 +28,19 @@ const routes = [
     name: "login",
     component: Login,
   },
-
   {
-    path: "/exercises",
-    name: "exercises",
-    component: ExercisesView,
+    path: "/okved",
+    name: "okved",
+    component: OkvedView,
     meta: { auth: true },
   },
   {
-    path: "/workouts",
-    name: "workouts",
-    component: WorkoutView,
+    path: "/professions",
+    name: "professions",
+    component: ProfessionsView,
     meta: { auth: true },
   },
-  {
-    path: "/workout/:id",
-    name: "exercises-in-workout",
-    component: ExercisesInWorkoutView,
-    meta: { auth: true },
-  }
+  
 ];
 
 const router = createRouter({

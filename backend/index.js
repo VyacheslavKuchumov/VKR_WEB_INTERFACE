@@ -9,6 +9,8 @@ const port = process.env.PORT;
 
 const auth_routes = require("./routes/auth");
 const users_routes = require("./routes/users");
+const okved_routes = require("./routes/okved");
+const professions_routes = require("./routes/professions");
 
 
 
@@ -21,6 +23,8 @@ app.use(
 
 app.use("/api/auth", auth_routes);
 app.use("/api/users", users_routes);
+app.use("/api/okved", okved_routes);
+app.use("/api/professions", professions_routes);
 
 
 
@@ -36,7 +40,7 @@ const { initializeDatabase } = require("./models/index");
 
 app.listen(port, () => {
   //###############################
-  initializeDatabase();
+  // initializeDatabase();
   //###############################
   console.log(`server started on port ${port}`);
 });

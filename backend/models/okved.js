@@ -10,11 +10,18 @@ const Okved = sequelize.define(
       autoIncrement: true,
       primaryKey: true,
     },
-    code: {
+    section_code: {
       type: DataTypes.TEXT,
       unique: true,
+      allowNull: false
     },
-    okved_name: {
+    group_code: {
+      type: DataTypes.TEXT,
+      unique: true,
+      allowNull: false
+    },
+    
+    group_name: {
       type: DataTypes.TEXT,
       allowNull: false
     }

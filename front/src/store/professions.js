@@ -2,7 +2,7 @@ import instance from "@/middlewares";
 
 
 export default {
-  name: "exercises",
+  name: "professions",
   state: () => ({
     data: null,
 
@@ -14,52 +14,52 @@ export default {
 
   },
   actions: {
-    async getExercises({ commit }) {
+    // get professions
+    async getProfessions({ commit }) {
         try {
-            const response = await instance.get(`/api/exercises`);
-            
+            const response = await instance.get("/api/professions");
             if (response) return commit("setData", response.data);
         }
         catch (error) {
             console.log(error);
         }
-      
-
     },
-    async createExercise({}, input) {
+
+    // create profession
+    async createProfession({}, input) {
         try {
-            const { exercise_name, exercise_description, muscle_group } = input;
-            const response = await instance.post("/api/exercises", { exercise_name, exercise_description, muscle_group });
+            const { profession_name } = input;
+            const response = await instance.post("/api/professions", { profession_name });
             if (response.ok) return console.log("ok");
         }
         catch (error) {
             console.log(error);
         }
     },
-
-    async updateExercise({}, input) {
-        try {
-            const { exercise_id, exercise_name, exercise_description, muscle_group } = input;
-            const response = await instance.put("/api/exercises", { exercise_id, exercise_name, exercise_description, muscle_group });
-            if (response.ok) return console.log("ok");
-        }
-        catch (error) {
-            console.log(error);
-        }
-    },
-
-    async deleteExercise({}, exercise_id) {
-        try {
-            const response = await instance.delete(`/api/exercises/${exercise_id}`);
-            if (response.ok) return console.log("ok");
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
     
-
-
+    // update profession
+    async updateProfession({}, input) {
+        try {
+            const { profession_id, profession_name } = input;
+            const response = await instance.put("/api/professions", { profession_id, profession_name });
+            if (response.ok) return console.log("ok");
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+    
+    // delete profession
+    async deleteProfession({}, profession_id) {
+        try {
+            const response = await instance.delete(`/api/professions/${profession_id}`);
+            if (response.ok) return console.log("ok");
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+    
   },
 
   namespaced: true,

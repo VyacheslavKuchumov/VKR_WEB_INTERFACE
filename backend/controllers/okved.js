@@ -15,8 +15,8 @@ const getOkveds = async (req, res) => {
 // create okved
 const createOkved = async (req, res) => {
     try {
-        const { okved_name, okved_code } = req.body
-        const okved = await Okved.create({ okved_name, okved_code })
+        const { okved_name, code } = req.body
+        const okved = await Okved.create({ okved_name, code })
         res.status(201).json(okved)
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -26,10 +26,10 @@ const createOkved = async (req, res) => {
 // update okved
 const updateOkved = async (req, res) => {
     try {
-        const { okved_id, okved_name, okved_code } = req.body
+        const { okved_id, okved_name, code } = req.body
         const okved = await Okved.findByPk(okved_id)
         if (!okved) return res.status(404).send({ message: 'Okved not found' })
-        await okved.update({ okved_name, okved_code })
+        await okved.update({ okved_name, code })
         return res.status(200).send({ message: 'updated' })
     } catch (error) {
         return res.status(500).send({ message: error.message })
