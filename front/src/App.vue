@@ -23,6 +23,9 @@
           <v-list-item v-if="isAuth" to="/okved">
             <v-list-item-title>ОКВЭД</v-list-item-title>
           </v-list-item>
+          <v-list-item v-if="isAuth" to="/employment_minstat">
+            <v-list-item-title class="text-wrap">Среднегодовая численность занятых</v-list-item-title>
+          </v-list-item>
          
           <v-list-item v-if="isAuth" @click="logout()">
             <v-list-item-title>Выйти</v-list-item-title>

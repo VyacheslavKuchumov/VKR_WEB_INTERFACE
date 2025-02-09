@@ -12,6 +12,7 @@ import OkvedSubclassesView from "@/views/okved/3OkvedSubclassesView.vue";
 import OkvedGroupsView from "@/views/okved/4OkvedGroupsView.vue";
 import OkvedSubgroupsView from "@/views/okved/5OkvedSubgroupsView.vue";
 import OkvedActivitiesView from "@/views/okved/6OkvedActivitiesView.vue";
+import EmploymentMinstatView from "@/views/Minstat/EmploymentMinstatView.vue";
 
 import ProfessionsView from "@/views/ProfessionsView.vue";
 
@@ -36,6 +37,12 @@ const routes = [
     path: "/okved",
     name: "okved",
     component: OkvedView,
+    meta: { auth: true },
+  },
+  {
+    path: "/employment_minstat",
+    name: "employment_minstat",
+    component: EmploymentMinstatView,
     meta: { auth: true },
   },
   {
@@ -87,7 +94,7 @@ router.beforeEach(async (to, from, next) => {
     const requireAuth = to.matched.some((record) => record?.meta.auth);
     if (requireAuth) {
       const uid = localStorage.getItem("uid");
-      const response = await instance.get(`/users/${uid}`);
+      const response = await instance.get(`/api/users/${uid}`);
       if (response.status == 200) {
         return next();
       } else if (response.status == 403) {

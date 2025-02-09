@@ -4,7 +4,7 @@ from app.schemas.okved_section import OkvedSectionCreate, OkvedSectionUpdate
 
 # function for getting all okved sections
 def get_okved_sections(db: Session):
-    return db.query(OkvedSection).all()
+    return db.query(OkvedSection).order_by(OkvedSection.code).all()
 
 # funcion for creating a new okved section
 def create_okved_section(db: Session, okved_section: OkvedSectionCreate):

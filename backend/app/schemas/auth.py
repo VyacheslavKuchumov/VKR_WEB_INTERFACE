@@ -15,8 +15,7 @@ class AuthTokens(BaseModel):
     accessToken: str
     refreshToken: str
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class AuthChangeResponse(BaseModel):
     auth_uid: UUID
