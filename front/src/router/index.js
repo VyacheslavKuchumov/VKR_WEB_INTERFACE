@@ -87,7 +87,7 @@ router.beforeEach(async (to, from, next) => {
     const requireAuth = to.matched.some((record) => record?.meta.auth);
     if (requireAuth) {
       const uid = localStorage.getItem("uid");
-      const response = await instance.get(`/api/users/${uid}`);
+      const response = await instance.get(`/users/${uid}`);
       if (response.status == 200) {
         return next();
       } else if (response.status == 403) {

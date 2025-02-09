@@ -41,7 +41,7 @@ export default {
     },
     actions: {
         async register({ }, { email, password, name }) {
-            const response = await fetch(`${process.env.VUE_APP_SERVER}/api/auth/signup`, {
+            const response = await fetch(`${process.env.VUE_APP_SERVER}/auth/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json; charset=utf-8'
@@ -58,7 +58,7 @@ export default {
             return
         },
         async login({ commit }, { email, password }) {
-            const response = await fetch(`${process.env.VUE_APP_SERVER}/api/auth/signin`, {
+            const response = await fetch(`${process.env.VUE_APP_SERVER}/auth/signin`, {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json; charset=utf-8' },
                 body: JSON.stringify({
@@ -78,7 +78,7 @@ export default {
             return
         },
         async changeAccess({ }) {
-            const response = await instance.post('/api/auth/changeAccess', {
+            const response = await instance.post('/auth/changeAccess', {
                 headers: {
                     'x-refresh-token': localStorage.getItem('refreshToken')
                 }
