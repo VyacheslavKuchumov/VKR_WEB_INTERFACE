@@ -1,6 +1,6 @@
 <template>
   <v-card max-width="800" class="elevation-0 mt-5 ml-auto mr-auto">
-    <v-card-title class="text-wrap" align="center">ОКВЭД СЕКЦИИ</v-card-title>
+    <v-card-title class="text-wrap" align="center">ОКВЭД Разделы</v-card-title>
   </v-card>
   
   <v-card class="elevation-5 mt-5 ml-auto mr-auto" max-width="800">
@@ -18,7 +18,7 @@
               {{ section.code }} - {{ section.name }}
             </v-card-title>
             <v-card-actions class="justify-end">
-              <v-btn icon="mdi-page-next" color="green-darken-1" variant="text" @click="goToPage(section)"></v-btn>
+              <v-btn icon="mdi-page-next" color="green-darken-1" variant="text" disabled @click="goToPage(section)"></v-btn>
               <v-btn icon="mdi-pencil" color="blue-darken-1" variant="text" @click="openEditDialog(section)"></v-btn>
               <v-btn icon="mdi-delete" color="red-darken-1" variant="text" @click="confirmDelete(section)"></v-btn>
             </v-card-actions>

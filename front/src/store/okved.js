@@ -18,7 +18,7 @@ export default {
     // get okved sections
     async getOkvedSections({ commit }) {
         try {
-            const response = await instance.get("/api/okved/sections");
+            const response = await instance.get("/okved_sections");
             if (response) return commit("setData", response.data);
         }
         catch (error) {
@@ -30,7 +30,7 @@ export default {
     async createOkvedSection({}, input) {
         try {
             const { name, code } = input;
-            const response = await instance.post("/api/okved/sections", { name, code });
+            const response = await instance.post("/okved_sections", { name, code });
             if (response.ok) return console.log("ok");
         }
         catch (error) {
@@ -42,7 +42,7 @@ export default {
     async updateOkvedSection({}, input) {
         try {
             const { id, name, code } = input;
-            const response = await instance.put("/api/okved/sections", { section_id:id, name, code });
+            const response = await instance.put(`/okved_sections/${id}`, { name, code });
             if (response.ok) return console.log("ok");
         }
         catch (error) {
@@ -53,7 +53,7 @@ export default {
     // delete okved section
     async deleteOkvedSection({}, id) {
         try {
-            const response = await instance.delete(`/api/okved/sections/${id}`);
+            const response = await instance.delete(`/okved_sections/${id}`);
             if (response.ok) return console.log("ok");
         }
         catch (error) {
@@ -67,7 +67,7 @@ export default {
     // get okved classes
     async getOkvedClasses({ commit }, id) {
         try {
-            const response = await instance.get(`/api/okved/classes/${id}`);
+            const response = await instance.get(`/okved/classes/${id}`);
             if (response) return commit("setData", response.data);
         }
         catch (error) {
@@ -80,7 +80,7 @@ export default {
         try {
             const { name, code, section_id } = input;
             console.log(input);
-            const response = await instance.post("/api/okved/classes", { name, code, section_id });
+            const response = await instance.post("/okved/classes", { name, code, section_id });
             if (response.ok) return console.log("ok");
         }
         catch (error) {
@@ -92,7 +92,7 @@ export default {
     async updateOkvedClass({}, input) {
         try {
             const { id, name, code, section_id } = input;
-            const response = await instance.put("/api/okved/classes", { id, name, code, section_id });
+            const response = await instance.put("/okved/classes", { id, name, code, section_id });
             if (response.ok) return console.log("ok");
         }
         catch (error) {

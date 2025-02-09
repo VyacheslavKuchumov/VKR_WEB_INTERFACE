@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
-from app.routers import auth as auth_router, user as user_router
+from app.routers import auth, user, okved_section
 
 # Create all tables (in production, use Alembic for migrations)
 Base.metadata.create_all(bind=engine)
@@ -26,5 +26,7 @@ app.add_middleware(
 )
 
 # Include your API routers
-app.include_router(auth_router.router, prefix="/auth", tags=["auth"])
-app.include_router(user_router.router, prefix="/users", tags=["users"])
+app.include_router(auth.router, prefix="/auth", tags=["auth"])
+app.include_router(user.router, prefix="/users", tags=["users"])
+app.include_router(okved_section.router, prefix="/okved_sections", tags=["okved_sections"])
+
