@@ -2,11 +2,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app.routers import auth, user, okved_section, employment_minstat
+from fastapi.openapi.utils import get_openapi
 
 # Create all tables (in production, use Alembic for migrations)
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(
+    title="FastAPI",
+    version="0.1.0",
+    description="Sluvik's API"
+)
 
 # Define allowed origins (adjust the list to your requirements)
 origins = [
@@ -32,3 +37,19 @@ app.include_router(okved_section.router, prefix="/api/okved_sections", tags=["ok
 app.include_router(employment_minstat.router, prefix="/api/employment_minstat", tags=["employment_minstat"])
 
 
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    openapi_schema = get_openapi(
+        title=app.title,
+        version=app.version,
+        description=app.description,
+        routes=app.routes,
+    )
+    # Override the openapi version for compatibility
+    openapi_schema["openapi"] = "3.0.2"
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
+
+app.openapi = custom_openapi
