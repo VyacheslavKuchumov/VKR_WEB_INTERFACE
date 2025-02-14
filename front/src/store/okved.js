@@ -18,7 +18,7 @@ export default {
     // get okved sections
     async getOkvedSections({ commit }) {
         try {
-            const response = await instance.get("/api/okved/sections");
+            const response = await instance.get("/api/okved_sections");
             if (response) return commit("setData", response.data);
         }
         catch (error) {
@@ -30,7 +30,7 @@ export default {
     async createOkvedSection({}, input) {
         try {
             const { name, code } = input;
-            const response = await instance.post("/api/okved/sections", { name, code });
+            const response = await instance.post("/api/okved_sections", { name, code });
             if (response.ok) return console.log("ok");
         }
         catch (error) {
@@ -42,7 +42,7 @@ export default {
     async updateOkvedSection({}, input) {
         try {
             const { id, name, code } = input;
-            const response = await instance.put("/api/okved/sections", { section_id:id, name, code });
+            const response = await instance.put(`/api/okved_sections/${id}`, { name, code });
             if (response.ok) return console.log("ok");
         }
         catch (error) {
@@ -53,7 +53,7 @@ export default {
     // delete okved section
     async deleteOkvedSection({}, id) {
         try {
-            const response = await instance.delete(`/api/okved/sections/${id}`);
+            const response = await instance.delete(`/api/okved_sections/${id}`);
             if (response.ok) return console.log("ok");
         }
         catch (error) {

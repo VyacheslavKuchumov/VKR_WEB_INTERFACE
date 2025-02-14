@@ -26,35 +26,12 @@ export default {
   methods: {
     ...mapActions({
       getUser: "user/getUserByUid",
-      getUserInfo: "user_info/getUserInfo",
-      createUserInfo: "user_info/createUserInfo",
-      updateUserInfo: "user_info/updateUserInfo",
     }),
 
     user() {
       return this.$store.state.user.user;
     },
-    // user_info() {
-    //   return this.$store.state.user_info.data;
-    // },
 
-    // async handleCreateUserInfo(data) {
-    //   try {
-    //     await this.createUserInfo(data);
-    //     await this.getUserInfo();
-    //     this.hasUserInfo = true;
-    //   } catch (error) {
-    //     console.error("Failed to create user info:", error);
-    //   }
-    // },
-    // async handleEditUserInfo(data) {
-    //   try {
-    //     await this.updateUserInfo(data);
-    //     await this.getUserInfo(); // Refresh the data after update
-    //   } catch (error) {
-    //     console.error("Failed to update user info:", error);
-    //   }
-    // },
   },
   watch: {},
   async mounted() {
@@ -62,12 +39,7 @@ export default {
 
     if (this.uid) {
       await this.getUser();
-      // try {
-      //   await this.getUserInfo();
-      //   this.hasUserInfo = true;
-      // } catch (e) {
-      //   this.hasUserInfo = false;
-      // }
+
     }
   },
 };

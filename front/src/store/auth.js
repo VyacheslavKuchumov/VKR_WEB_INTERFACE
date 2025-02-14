@@ -78,11 +78,12 @@ export default {
             return
         },
         async changeAccess({ }) {
-            const response = await instance.post('/api/auth/changeAccess', {
-                headers: {
-                    'x-refresh-token': localStorage.getItem('refreshToken')
-                }
-            })
+            const response = await instance.post('/api/auth/changeAccess', {},  // Body data (empty in this case)
+                {
+                    headers: {
+                        'x-refresh-token': localStorage.getItem('refreshToken')
+                    }
+                })
             if (!checkStatuses(response.status)) return
             localStorage.setItem('accessToken', response.data.accessToken)
             localStorage.setItem('refreshToken', response.data.refreshToken)
