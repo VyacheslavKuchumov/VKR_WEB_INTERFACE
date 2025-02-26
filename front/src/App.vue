@@ -24,7 +24,10 @@
             <v-list-item-title>ОКВЭД</v-list-item-title>
           </v-list-item>
           <v-list-item v-if="isAuth" to="/employment_minstat">
-            <v-list-item-title class="text-wrap">Среднегодовая численность занятых</v-list-item-title>
+            <v-list-item-title class="text-wrap">Дашборды (МинСтат)</v-list-item-title>
+          </v-list-item>
+          <v-list-item v-if="isAuth" to="/edit_minstat_data">
+            <v-list-item-title class="text-wrap">Редактирование данных (МинСтат)</v-list-item-title>
           </v-list-item>
          
           <v-list-item v-if="isAuth" @click="logout()">

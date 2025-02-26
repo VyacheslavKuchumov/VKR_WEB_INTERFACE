@@ -12,7 +12,8 @@ import OkvedSubclassesView from "@/views/okved/3OkvedSubclassesView.vue";
 import OkvedGroupsView from "@/views/okved/4OkvedGroupsView.vue";
 import OkvedSubgroupsView from "@/views/okved/5OkvedSubgroupsView.vue";
 import OkvedActivitiesView from "@/views/okved/6OkvedActivitiesView.vue";
-import EmploymentMinstatView from "@/views/Minstat/EmploymentMinstatView.vue";
+import EmploymentMinstatView from "@/views/Stats/EmploymentMinstatView.vue";
+import EditMinstatDataView from "@/views/Stats/EditMinstatDataView.vue";
 
 import ProfessionsView from "@/views/ProfessionsView.vue";
 
@@ -43,6 +44,12 @@ const routes = [
     path: "/employment_minstat",
     name: "employment_minstat",
     component: EmploymentMinstatView,
+    meta: { auth: true },
+  },
+  {
+    path: "/edit_minstat_data",
+    name: "edit_minstat_data",
+    component: EditMinstatDataView,
     meta: { auth: true },
   },
   {
