@@ -16,6 +16,7 @@ app = FastAPI(root_path="/api",
 origins = [
     "http://localhost",
     "http://localhost:8080",
+    "http://localhost:3000",
     "http://vyachik.ru",
     "http://www.vyachik.ru",
 ]
