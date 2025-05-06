@@ -1,5 +1,5 @@
 <template>
-  <v-card  v-if="user()" class="mx-auto" max-width="400">
+  <!-- <v-card  v-if="user()" class="mx-auto" max-width="400">
     <template v-slot:title>
       <span class="font-black">Главная страница</span>
     </template>
@@ -8,7 +8,17 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel nisl sed massa venenatis consequat. Integer auctor mollis ex eu imperdiet. Praesent at vehicula sem. Nulla facilisi. Sed ultrices scelerisque ex eu maximus. Duis vulputate lobortis nisl a ullamcorper. Nullam ultrices ultrices lectus, quis varius ex porta nec.
     </v-card-text>
     
-  </v-card>
+  </v-card> -->
+
+  <v-container>
+        <v-sheet
+          border="dashed md"
+          color="surface-light"
+          height="800"
+          rounded="lg"
+          width="100%"
+        ></v-sheet>
+  </v-container>
 </template>
 
 <script>

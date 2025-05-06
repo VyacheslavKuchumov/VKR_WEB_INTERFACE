@@ -1,16 +1,74 @@
 <template>
   <v-app>
+
+      <v-navigation-drawer v-if="isAuth" expand-on-hover rail>
+        <v-list>
+          <v-list-item
+            prepend-icon="mdi-account"
+            subtitle="Logged in as"
+          >
+          <v-list-item-title>
+            {{ user() ? user().name : "что то пошло не так..." }}
+          </v-list-item-title>
+            
+        </v-list-item>
+        </v-list>
+
+        <v-divider></v-divider>
+
+        <v-list density="compact" nav>
+          <v-list-item 
+            v-if="isAuth"
+            to="/"
+            prepend-icon="mdi-home"
+            title="Главная"
+            value="home">
+            
+          </v-list-item>
+          
+          <v-list-item 
+            v-if="isAuth" 
+            to="/okved"
+            prepend-icon="mdi-format-list-group"
+            title="ОКВЭД"
+            value="okved">
+          </v-list-item>
+          <v-list-item 
+            v-if="isAuth"
+            to="/employment_minstat"
+            prepend-icon="mdi-chart-bar"
+            title="Графики">
+          </v-list-item>
+          <v-list-item 
+            v-if="isAuth" 
+            to="/edit_minstat_data"
+            prepend-icon="mdi-file-edit"
+            title="Редактирование (МинСтат)">
+          </v-list-item>
+          
+          <v-list-item 
+            v-if="isAuth" 
+            @click="logout()"
+            prepend-icon="mdi-logout"
+            title="Выйти">
+          </v-list-item>
+
+        </v-list>
+      </v-navigation-drawer>
+
+
     
-    <v-app-bar color="primary">
+    <!-- <v-app-bar color="primary">
+      <v-app-bar-nav-icon v-if="isAuth" @click="drawer = !drawer" />
       <v-toolbar-title @click="this.$router.push(`/`);">Статистика</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-app-bar-nav-icon v-if="isAuth" @click="drawer = !drawer" />
+      
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
-      location="right"
+      location="left"
       app
       temporary
     >
@@ -35,7 +93,7 @@
           </v-list-item>
         
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
     <v-main>
       <v-container>
         <router-view />
@@ -57,12 +115,22 @@ export default {
     ...mapActions({
       logout: "auth/logout",
     }),
+    ...mapActions({
+      getUser: "user/getUserByUid",
+    }),
+
+    user() {
+      return this.$store.state.user.user;
+    },
   },
-  mounted() {
+  async mounted() {
     const uid = localStorage.getItem("uid");
     uid
       ? this.$store.commit("auth/setAuth", true)
       : this.$store.commit("auth/setAuth", false);
+    if (uid) {
+      await this.getUser();
+    }
   },
 
   computed: {
