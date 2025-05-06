@@ -1,23 +1,15 @@
+# ./frontend/Dockerfile.dev
+FROM node:20-alpine
 
-# Stage 1: build the Vue app
-FROM node:23-slim AS build
-
-# accept build‑time ARG
-ARG VUE_APP_SERVER
-ENV VUE_APP_SERVER=$VUE_APP_SERVER
-
-
+# 1. Set workdir
 WORKDIR /app
+
+# 2. Install dependencies
 COPY package*.json ./
 RUN npm ci
+
+# 3. Copy rest of code
 COPY . .
-RUN npm run build
 
-# Stage 2: serve with nginx
-FROM nginx:stable-alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-# Optional: copy your custom nginx.conf
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# 4. Dev entrypoint (we’ll override in Compose)
+CMD ["npm", "run", "serve", "--", "--host", "0.0.0.0", "--port", "80"]
