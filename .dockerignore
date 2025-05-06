@@ -1,0 +1,24 @@
+# Don't send git metadata
+.git
+.gitignore
+
+# OS files
+.DS_Store
+
+# Node
+frontend/node_modules
+frontend/dist
+
+# Python
+backend/.venv
+backend/venv
+backend/__pycache__
+*.pyc
+
+# Env files & logs
+*.env
+*.log
+
+# Compose and docs (you can include these if needed in build)
+docker-compose.yml
+README.md

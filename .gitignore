@@ -1,2 +1,41 @@
-/backend/.venv
+
+
+# ─── Global ───────────────────────────────────────────────────────
+# macOS
+.DS_Store
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates/
+
+# Environment variables
 .env
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+*.log
+
+# ─── Frontend (Vue) ──────────────────────────────────────────────
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.npm
+/frontend/*.local
+
+# ─── Backend (FastAPI/Python) ────────────────────────────────────
+/backend/.venv/
+/backend/venv/
+/backend/__pycache__/
+/backend/*.py[cod]
+/backend/*.sqlite3
+/backend/*.log
+
+# ─── Miscellaneous ───────────────────────────────────────────────
+coverage/
+*.cover
+htmlcov/
