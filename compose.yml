@@ -1,22 +1,4 @@
-
 services:
-  traefik:
-    image: traefik:v2.10
-    command:
-      - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.le.acme.email=slavakuchumov1776@gmail.com"
-      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
-      - "--certificatesresolvers.le.acme.tlschallenge=true"
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik:/etc/traefik:ro
-      - ./letsencrypt:/letsencrypt
-
   db:
     image: postgres:latest
     env_file:
@@ -29,15 +11,12 @@ services:
       - db_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    labels:
-      - "traefik.enable=false"
 
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
       args:
-        SECRET: ${SECRET}               # build‑time ARG preserved
+        SECRET: ${SECRET}               # build‑time ARG if you need it
     env_file:
       - .env
     environment:
@@ -48,29 +27,22 @@ services:
     ports:
       - "8000:8000"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`vyachik.ru/api`)"
-      - "traefik.http.services.backend.loadbalancer.server.port=8000"
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
       args:
-        VUE_APP_SERVER: ${VUE_APP_SERVER}  # build‑time ARG preserved
+        VUE_APP_SERVER: ${VUE_APP_SERVER}
     env_file:
       - .env
     environment:
+      # When running the container, ensure this is set too,
+      # so `npm run serve` picks up the same URL.
       VUE_APP_SERVER: ${VUE_APP_SERVER}
-    depends_on:
-      - backend
     ports:
       - "3000:80"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`vyachik.ru`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+    depends_on:
+      - backend
 
 volumes:
   db_data:
