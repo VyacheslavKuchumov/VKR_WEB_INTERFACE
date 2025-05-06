@@ -13,8 +13,7 @@ services:
       - db_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    labels:
-      - "traefik.enable=false"
+
 
   backend:
     build:
