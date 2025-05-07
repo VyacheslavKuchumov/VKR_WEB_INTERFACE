@@ -1,25 +1,24 @@
 from pydantic import BaseModel, ConfigDict
 
-
-
-class EmploymentMinstatCreate(BaseModel):
+class EmploymentHrCreate(BaseModel):
     year: int
     number_of_employees: float
-    okved_section_id: int
+    professional_role_id: int
     salary: float
+    
 
-class EmploymentMinstatUpdate(BaseModel):
+class EmploymentHrUpdate(BaseModel):
     year: int
     number_of_employees: float
-    okved_section_id: int
+    professional_role_id: int
     salary: float
-        
-class EmploymentMinstatOut(BaseModel):
+    
+
+class EmploymentHrOut(BaseModel):
     id: int
     year: int
     number_of_employees: float
     salary: float
-
-
+    professional_role_id: int
 
     model_config = ConfigDict(from_attributes=True)
