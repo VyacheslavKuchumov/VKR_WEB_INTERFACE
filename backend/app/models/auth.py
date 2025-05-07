@@ -6,7 +6,7 @@ from app.database import Base
 from sqlalchemy.orm import relationship
 
 class Auth(Base):
-    __tablename__ = "auths"
+    __tablename__ = "auth"
 
     id = Column(BigInteger, primary_key=True, index=True)
     auth_uid = Column(UUID(as_uuid=True), unique=True, index=True, default=uuid.uuid4)

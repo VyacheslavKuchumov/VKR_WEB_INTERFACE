@@ -11,7 +11,7 @@ class EmploymentMinstat(Base):
     salary = Column(Float, nullable=False)
     
     # Foreign key that references the OKVED section.
-    okved_section_id = Column(BigInteger, ForeignKey("okved_sections.id"), nullable=False)
+    okved_section_id = Column(BigInteger, ForeignKey("okved_section.id"), nullable=False)
     
     # Relationship back to the OkvedSection.
-    okved_section = relationship("OkvedSection", back_populates="employments")
+    okved_section = relationship("OkvedSection", back_populates="employment_minstat")

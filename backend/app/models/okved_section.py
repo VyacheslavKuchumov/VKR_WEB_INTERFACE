@@ -3,14 +3,15 @@ from sqlalchemy.orm import relationship
 from app.database import Base
 
 class OkvedSection(Base):
-    __tablename__ = "okved_sections"
+    __tablename__ = "okved_section"
 
     id = Column(BigInteger, primary_key=True, index=True)
-    code = Column(Text, nullable=False, unique=True)
-    name = Column(Text, nullable=False)
+    okved_section_code = Column(Text, nullable=False, unique=True)
+    okved_section_name = Column(Text, nullable=False)
+    
     
     # One-to-many relationship: one OKVED section can have many employment records.
-    employments = relationship(
+    employment_minstat = relationship(
         "EmploymentMinstat",
         back_populates="okved_section",
         # cascade="all, delete-orphan"
