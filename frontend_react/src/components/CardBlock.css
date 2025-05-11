@@ -1,0 +1,25 @@
+.card-block {
+  position: fixed;
+  bottom: 20px; /* Отступ от нижней части экрана */
+  left: 50%;
+  transform: translateX(-50%); /* Центрирование по горизонтали */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Промежуток между карточками */
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 200px; /* Ширина карточки */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Эффект увеличения при наведении */
+}

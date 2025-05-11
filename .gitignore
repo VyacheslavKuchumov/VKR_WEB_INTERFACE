@@ -27,6 +27,13 @@ yarn-error.log*
 /frontend/.npm
 /frontend/*.local
 
+# ─── Frontend (react) ──────────────────────────────────────────────
+/frontend_react/node_modules/
+/frontend_react/dist/
+/frontend_react/.npm
+/frontend_react/*.local
+
+
 # ─── Backend (FastAPI/Python) ────────────────────────────────────
 /backend/.venv/
 /backend/venv/
