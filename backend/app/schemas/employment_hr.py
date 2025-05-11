@@ -1,23 +1,23 @@
 from pydantic import BaseModel, ConfigDict
 
 class EmploymentHrCreate(BaseModel):
-    year: int
-    number_of_employees: float
+    date: int
+    number_of_vacancies: float
     professional_role_id: int
     salary: float
     
 
 class EmploymentHrUpdate(BaseModel):
-    year: int
-    number_of_employees: float
+    date: int
+    number_of_vacancies: float
     professional_role_id: int
     salary: float
     
 
 class EmploymentHrOut(BaseModel):
     id: int
-    year: int
-    number_of_employees: float
+    date: int
+    number_of_vacancies: float
     salary: float
     professional_role_id: int
 
