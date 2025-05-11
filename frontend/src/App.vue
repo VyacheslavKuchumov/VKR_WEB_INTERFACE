@@ -1,7 +1,7 @@
 <template>
   <v-app>
 
-      <v-navigation-drawer v-if="isAuth" expand-on-hover rail>
+      <v-navigation-drawer v-if="isAuth && !$vuetify.display.mobile" expand-on-hover rail>
         <v-list>
           <v-list-item
             prepend-icon="mdi-account"
@@ -58,7 +58,7 @@
 
 
     
-    <!-- <v-app-bar color="primary">
+    <v-app-bar v-if="$vuetify.display.mobile"  color="primary">
       <v-app-bar-nav-icon v-if="isAuth" @click="drawer = !drawer" />
       <v-toolbar-title @click="this.$router.push(`/`);">Статистика</v-toolbar-title>
 
@@ -71,6 +71,7 @@
       location="left"
       app
       temporary
+      v-if="$vuetify.display.mobile"
     >
       <v-list>
         
@@ -93,7 +94,7 @@
           </v-list-item>
         
       </v-list>
-    </v-navigation-drawer> -->
+    </v-navigation-drawer>
     <v-main>
       <v-container>
         <router-view />

@@ -83,7 +83,7 @@
             ></v-text-field>
             <v-select v-model="employmentForm.okved_section_id"
                 :items="okvedSections()"
-                item-title="name"
+                item-title="okved_section_name"
                 item-value="id"
                 label="ОКВЭД"
                 clearable
@@ -150,7 +150,7 @@
     computed: {
       groupBy() {
       return [
-        { key: "okved_section.name", order: "asc" },
+        { key: "okved_section.okved_section_name", order: "asc" },
       ];
     },
     },
