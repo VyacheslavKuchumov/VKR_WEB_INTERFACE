@@ -30,27 +30,30 @@ services:
     volumes:
       - ./backend:/app
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     args:
-  #       VUE_APP_SERVER: ${VUE_APP_SERVER}
-  #   env_file:
-  #     - .env
-  #   environment:
-  #     # When running the container, ensure this is set too,
-  #     # so `npm run serve` picks up the same URL.
-  #     VUE_APP_SERVER: ${VUE_APP_SERVER}
+###########################################
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VUE_APP_SERVER: ${VUE_APP_SERVER}
+    env_file:
+      - .env
+    environment:
+      # When running the container, ensure this is set too,
+      # so `npm run serve` picks up the same URL.
+      VUE_APP_SERVER: ${VUE_APP_SERVER}
+      WATCHPACK_POLLING: true
 
-  #   ports:
-  #     - "8080:8080"
-  #   depends_on:
-  #     - backend
-  #   command: npm run serve
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    command: npm run serve
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+##########################################
   frontend_react:
     build:
       context: ./frontend_react
@@ -58,16 +61,14 @@ services:
       #   VUE_APP_SERVER: ${VUE_APP_SERVER}
     # env_file:
     #   - .env
-    # environment:
-    #   # When running the container, ensure this is set too,
-    #   # so `npm run serve` picks up the same URL.
-    #   VUE_APP_SERVER: ${VUE_APP_SERVER}
+    environment:
+      - WATCHPACK_POLLING=true
 
     ports:
       - "3000:3000"
     depends_on:
       - backend
-    command: npm start
+    command: npm run start
     volumes:
       - ./frontend_react:/app
       - /app/node_modules
