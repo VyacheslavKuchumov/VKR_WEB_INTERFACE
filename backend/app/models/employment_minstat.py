@@ -2,6 +2,7 @@ from sqlalchemy import Column, BigInteger, Text, DateTime, Integer, Float, Forei
 from sqlalchemy.orm import relationship
 from app.database import Base
 
+
 class EmploymentMinstat(Base):
     __tablename__ = "employment_minstat"
 

@@ -15,7 +15,7 @@
         <v-col>
           <v-card class="ma-2">
             <v-card-title class="text-h6 text-wrap">
-              {{ section.code }} - {{ section.name }}
+              {{ section.okved_section_code }} - {{ section.okved_section_name }}
             </v-card-title>
             <v-card-actions class="justify-end">
               <v-btn icon="mdi-page-next" color="green-darken-1" variant="text" disabled @click="goToPage(section)"></v-btn>
@@ -37,8 +37,8 @@
       </v-card-title>
       <v-card-text>
         <v-form ref="sectionForm" v-model="valid" @submit.prevent="saveSection">
-          <v-text-field v-model="sectionForm.code" label="Код" clearable :rules="[rules.required]"></v-text-field>
-          <v-text-field v-model="sectionForm.name" label="Наименование" clearable :rules="[rules.required]"></v-text-field>
+          <v-text-field v-model="sectionForm.okved_section_code" label="Код" clearable :rules="[rules.required]"></v-text-field>
+          <v-text-field v-model="sectionForm.okved_section_name" label="Наименование" clearable :rules="[rules.required]"></v-text-field>
         </v-form>
       </v-card-text>
       <v-card-actions>
@@ -52,7 +52,7 @@
   <v-dialog v-model="confirmDeleteDialog" max-width="400px">
     <v-card>
       <v-card-title class="text-h5">Подтвердите удаление</v-card-title>
-      <v-card-text>Вы уверены, что хотите удалить "{{ sectionToDelete?.code }} - {{ sectionToDelete?.name }}"?</v-card-text>
+      <v-card-text>Вы уверены, что хотите удалить "{{ sectionToDelete?.okved_section_code }} - {{ sectionToDelete?.okved_section_name }}"?</v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text @click="closeConfirmDialog">Отмена</v-btn>
@@ -72,7 +72,7 @@ export default {
       editDialog: false,
       sectionToDelete: null,
       editingSection: null,
-      sectionForm: { code: "", name: "" },
+      sectionForm: { okved_section_code: "", okved_section_name: "" },
       valid: false,
       rules: {
         required: (value) => !!value || "Это поле обязательно",
@@ -99,7 +99,7 @@ export default {
 
     openCreateDialog() {
       this.editingSection = null;
-      this.sectionForm = { code: "", name: "" };
+      this.sectionForm = { okved_section_code: "", okved_section_name: "" };
       this.editDialog = true;
     },
     openEditDialog(section) {
@@ -109,7 +109,7 @@ export default {
     },
     closeEditDialog() {
       this.editDialog = false;
-      this.sectionForm = { code: "", name: "" };
+      this.sectionForm = { okved_section_code: "", okved_section_name: "" };
     },
     async saveSection() {
       const sectionData = { ...this.sectionForm };

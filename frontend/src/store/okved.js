@@ -29,8 +29,8 @@ export default {
     // create okved section
     async createOkvedSection({}, input) {
         try {
-            const { name, code } = input;
-            const response = await instance.post("/api/okved_sections", { name, code });
+            const { okved_section_name, okved_section_code } = input;
+            const response = await instance.post("/api/okved_sections", { okved_section_name, okved_section_code });
             if (response.ok) return console.log("ok");
         }
         catch (error) {
@@ -41,8 +41,8 @@ export default {
     // update okved section
     async updateOkvedSection({}, input) {
         try {
-            const { id, name, code } = input;
-            const response = await instance.put(`/api/okved_sections/${id}`, { name, code });
+            const { id, okved_section_name, okved_section_code } = input;
+            const response = await instance.put(`/api/okved_sections/${id}`, { okved_section_name, okved_section_code });
             if (response.ok) return console.log("ok");
         }
         catch (error) {

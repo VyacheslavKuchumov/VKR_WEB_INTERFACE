@@ -1,15 +1,21 @@
-# ./frontend/Dockerfile.dev
-FROM node:20-alpine
+FROM node:lts-alpine
 
-# 1. Set workdir
+# install simple http server for serving static content
+RUN npm install -g http-server
+
+# make the 'app' folder the current working directory
 WORKDIR /app
 
-# 2. Install dependencies
+# copy both 'package.json' and 'package-lock.json' (if available)
 COPY package*.json ./
-RUN npm ci
 
-# 3. Copy rest of code
+# install project dependencies
+RUN npm ci
+# copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
 
-# 4. Dev entrypoint (we’ll override in Compose)
-CMD ["npm", "run", "serve", "--", "--host", "0.0.0.0", "--port", "80"]
+# build app for production with minification
+RUN npm run build
+
+EXPOSE 8080
+CMD [ "http-server", "dist" ]

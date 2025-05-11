@@ -1,6 +1,7 @@
 from sqlalchemy import Column, BigInteger, Text, DateTime
 from sqlalchemy.orm import relationship
 from app.database import Base
+from app.models.professional_role import ProfessionalRole
 
 class OkvedSection(Base):
     __tablename__ = "okved_section"
