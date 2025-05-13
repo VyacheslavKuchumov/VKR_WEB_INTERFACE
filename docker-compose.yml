@@ -53,25 +53,7 @@ services:
       - ./frontend:/app
       - /app/node_modules
 
-##########################################
-  # frontend_react:
-  #   build:
-  #     context: ./frontend_react
-  #     # args:
-  #     #   VUE_APP_SERVER: ${VUE_APP_SERVER}
-  #   # env_file:
-  #   #   - .env
-  #   environment:
-  #     - WATCHPACK_POLLING=true
 
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - backend
-  #   command: npm run start
-  #   volumes:
-  #     - ./frontend_react:/app
-  #     - /app/node_modules
 
 
 volumes:
