@@ -17,13 +17,13 @@
             <v-card-title class="text-wrap">{{ item.okved_section_name }}</v-card-title>
             <v-card-subtitle class="text-wrap">{{ item.okved_section_code }}</v-card-subtitle>
             <v-card-text>
-              <v-btn>Официальная статистика</v-btn>
-              <v-btn>Профессии</v-btn>
+              <v-btn class="mb-2" elevated block color="primary">Статистика</v-btn>
+              <v-btn class="mb-2" tonal block color="primary">Профессии</v-btn>
             </v-card-text>
 
             <!-- Action Buttons -->
             <v-card-actions class="justify-end">
-              <v-btn icon="mdi-page-next" color="green-darken-1" variant="text" disabled @click="goToPage(item)"></v-btn>
+              <!-- <v-btn icon="mdi-page-next" color="green-darken-1" variant="text" disabled @click="goToPage(item)"></v-btn> -->
               <v-btn icon="mdi-pencil" color="blue-darken-1" variant="text" @click="openEditDialog(item)"></v-btn>
               <v-btn icon="mdi-delete" color="red-darken-1" variant="text" @click="confirmDelete(item)"></v-btn>
             </v-card-actions>
