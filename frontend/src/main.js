@@ -6,10 +6,6 @@ import store from './store'
 
 
 
-
-
-
-
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'

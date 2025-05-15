@@ -1,17 +1,16 @@
-# Use an official Python runtime as a parent image
 FROM python:3.13-slim
 
 # Set workdir
 WORKDIR /app
 
-# Install system deps (if needed) then Python deps
+# Install Python deps
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your FastAPI app code
+# Copy FastAPI app code
 COPY . .
 
-# Expose port (match docker-compose)
+# Expose port
 EXPOSE 8000
 
 # Run the app with Uvicorn

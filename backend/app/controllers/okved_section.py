@@ -10,7 +10,8 @@ def get_okved_sections(db: Session):
 def create_okved_section(db: Session, okved_section: OkvedSectionCreate):
     db_okved_section = OkvedSection(
         okved_section_name=okved_section.okved_section_name,
-        okved_section_code=okved_section.okved_section_code
+        okved_section_code=okved_section.okved_section_code,
+        img_url=okved_section.img_url,
     )
     db.add(db_okved_section)
     db.commit()
@@ -22,6 +23,7 @@ def update_okved_section(db: Session, okved_section_id: int, okved_section: Okve
     db_okved_section = db.query(OkvedSection).filter(OkvedSection.id == okved_section_id).first()
     db_okved_section.okved_section_name = okved_section.okved_section_name
     db_okved_section.okved_section_code = okved_section.okved_section_code
+    db_okved_section.img_url = okved_section.img_url
     db.commit()
     db.refresh(db_okved_section)
     return db_okved_section

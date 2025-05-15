@@ -1,34 +1,57 @@
 <template>
-  <v-card max-width="800" class="elevation-0 mt-5 ml-auto mr-auto">
-    <v-card-title class="text-wrap" align="center">ОКВЭД Разделы</v-card-title>
-  </v-card>
   
-  <v-card class="elevation-5 mt-5 ml-auto mr-auto" max-width="800">
-    <v-toolbar flat>
-      
-      <v-spacer></v-spacer>
-      <v-btn icon="mdi-plus" color="primary" @click="openCreateDialog"></v-btn>
-    </v-toolbar>
+  <v-container>
     
-    <v-container v-if="okvedSections()">
-      <v-row v-for="section in okvedSections()" :key="section.section_id">
-        <v-col>
-          <v-card class="ma-2">
-            <v-card-title class="text-h6 text-wrap">
-              {{ section.okved_section_code }} - {{ section.okved_section_name }}
-            </v-card-title>
+    
+    <v-container v-if="okvedSections() && okvedSections().length" max-width="900">
+      <v-row 
+        
+      >
+        <v-col v-for="item in okvedSections()"
+        :key="item.id">
+          <v-card class="ma-2" max-width="300">
+            <!-- Event Image with Title Overlay -->
+            <v-img :src="item.img_url" min-height="150px"  class="white--text align-end">
+              
+            </v-img>
+            <v-card-title class="text-wrap">{{ item.okved_section_name }}</v-card-title>
+            <v-card-subtitle class="text-wrap">{{ item.okved_section_code }}</v-card-subtitle>
+            <v-card-text>
+              <v-btn>Официальная статистика</v-btn>
+              <v-btn>Профессии</v-btn>
+            </v-card-text>
+
+            <!-- Action Buttons -->
             <v-card-actions class="justify-end">
-              <v-btn icon="mdi-page-next" color="green-darken-1" variant="text" disabled @click="goToPage(section)"></v-btn>
-              <v-btn icon="mdi-pencil" color="blue-darken-1" variant="text" @click="openEditDialog(section)"></v-btn>
-              <v-btn icon="mdi-delete" color="red-darken-1" variant="text" @click="confirmDelete(section)"></v-btn>
+              <v-btn icon="mdi-page-next" color="green-darken-1" variant="text" disabled @click="goToPage(item)"></v-btn>
+              <v-btn icon="mdi-pencil" color="blue-darken-1" variant="text" @click="openEditDialog(item)"></v-btn>
+              <v-btn icon="mdi-delete" color="red-darken-1" variant="text" @click="confirmDelete(item)"></v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-    
-    <v-alert v-else type="info" class="ma-4">Нет данных</v-alert>
-  </v-card>
+
+    <!-- No Data Alert -->
+    <v-alert v-else type="info" class="ma-4">
+      Нет данных
+    </v-alert>
+
+    <!-- Create Button -->
+    <v-btn
+      fab
+      icon="mdi-plus"
+      color="primary"
+      position="fixed"
+      location="bottom right"
+      size="large"
+      elevation="8"
+      class="ma-4"
+      @click="openCreateDialog"
+    />
+
+  </v-container>
+  
 
   <v-dialog v-model="editDialog" max-width="450px">
     <v-card>
@@ -39,6 +62,7 @@
         <v-form ref="sectionForm" v-model="valid" @submit.prevent="saveSection">
           <v-text-field v-model="sectionForm.okved_section_code" label="Код" clearable :rules="[rules.required]"></v-text-field>
           <v-text-field v-model="sectionForm.okved_section_name" label="Наименование" clearable :rules="[rules.required]"></v-text-field>
+          <v-text-field v-model="sectionForm.img_url" label="Картинка" clearable></v-text-field>
         </v-form>
       </v-card-text>
       <v-card-actions>
@@ -52,7 +76,7 @@
   <v-dialog v-model="confirmDeleteDialog" max-width="400px">
     <v-card>
       <v-card-title class="text-h5">Подтвердите удаление</v-card-title>
-      <v-card-text>Вы уверены, что хотите удалить "{{ sectionToDelete?.okved_section_code }} - {{ sectionToDelete?.okved_section_name }}"?</v-card-text>
+      <v-card-text>Вы уверены, что хотите удалить "{{ sectionToDelete?.okved_section_name }}"?</v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text @click="closeConfirmDialog">Отмена</v-btn>
@@ -60,6 +84,9 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+  
+  
+
 </template>
 
 <script>
@@ -72,7 +99,7 @@ export default {
       editDialog: false,
       sectionToDelete: null,
       editingSection: null,
-      sectionForm: { okved_section_code: "", okved_section_name: "" },
+      sectionForm: { okved_section_code: "", okved_section_name: "", img_url: "" },
       valid: false,
       rules: {
         required: (value) => !!value || "Это поле обязательно",
@@ -84,7 +111,7 @@ export default {
   },
   methods: {
     okvedSections() {
-      return this.$store.state.okved.data;
+      return this.$store.state.okved.data || [];
     },
     ...mapActions({
       getOkvedSections: "okved/getOkvedSections",
@@ -99,7 +126,7 @@ export default {
 
     openCreateDialog() {
       this.editingSection = null;
-      this.sectionForm = { okved_section_code: "", okved_section_name: "" };
+      this.sectionForm = { okved_section_code: "", okved_section_name: "", img_url: "" };
       this.editDialog = true;
     },
     openEditDialog(section) {
@@ -109,7 +136,7 @@ export default {
     },
     closeEditDialog() {
       this.editDialog = false;
-      this.sectionForm = { okved_section_code: "", okved_section_name: "" };
+      this.sectionForm = { okved_section_code: "", okved_section_name: "", img_url: "" };
     },
     async saveSection() {
       const sectionData = { ...this.sectionForm };

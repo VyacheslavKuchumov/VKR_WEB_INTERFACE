@@ -6,6 +6,9 @@ from app.schemas.employment_minstat import EmploymentMinstatCreate, EmploymentMi
 def get_employment_minstat(db: Session):
     return db.query(EmploymentMinstat).order_by(EmploymentMinstat.year).all()
 
+# function for getting employment minstat records by okved_section_id
+def get_employment_minstat_by_okved_section_id(db: Session, okved_section_id: int):
+    return db.query(EmploymentMinstat).filter(EmploymentMinstat.okved_section_id == okved_section_id).order_by(EmploymentMinstat.year).all()
 
 # function for creating a new employment minstat record
 def create_employment_minstat(db: Session, employment_minstat: EmploymentMinstatCreate):

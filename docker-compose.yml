@@ -16,7 +16,7 @@ services:
     build:
       context: ./backend
       args:
-        SECRET: ${SECRET}               # build‑time ARG if you need it
+        SECRET: ${SECRET}
     env_file:
       - .env
     environment:
@@ -39,8 +39,6 @@ services:
     env_file:
       - .env
     environment:
-      # When running the container, ensure this is set too,
-      # so `npm run serve` picks up the same URL.
       VUE_APP_SERVER: ${VUE_APP_SERVER}
       WATCHPACK_POLLING: true
 
@@ -54,7 +52,20 @@ services:
       - /app/node_modules
 
 
+###########################################
+###########################################
+  mongo_db:
+    image: mongo:latest
+    env_file:
+      - .env
+    # environment:
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
 
 
 volumes:
   db_data:
+  mongo_data:

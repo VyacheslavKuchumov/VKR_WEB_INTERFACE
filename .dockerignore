@@ -6,16 +6,13 @@
 .DS_Store
 
 # Node
-frontend/node_modules
-frontend/dist
-# Node (react)
-frontend_react/node_modules
-frontend_react/dist
+/frontend/node_modules
+/frontend/dist
 
 # Python
-backend/.venv
-backend/venv
-backend/app/__pycache__
+/backend/.venv
+/backend/venv
+/backend/app/__pycache__
 *.pyc
 
 # Env files & logs

@@ -6,6 +6,10 @@ from app.schemas.professional_role import ProfessionalRoleCreate, ProfessionalRo
 def get_professional_roles(db: Session):
     return db.query(ProfessionalRole).all()
 
+# function for getting professional roles by okved_section_id
+def get_professional_roles_by_okved_section_id(db: Session, okved_section_id: int):
+    return db.query(ProfessionalRole).filter(ProfessionalRole.okved_section_id == okved_section_id).all()
+
 # function for creating a new professional role
 def create_professional_role(db: Session, professional_role: ProfessionalRoleCreate):
     db_professional_role = ProfessionalRole(
