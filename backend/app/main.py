@@ -19,6 +19,7 @@ origins = [
     "http://localhost:3000",
     "http://vyachik.ru",
     "http://www.vyachik.ru",
+    "https://vkr.vyachik-dev.ru"
 ]
 
 # Add CORS middleware to the FastAPI app
