@@ -18,7 +18,7 @@ export default {
     // get okved sections
     async getOkvedSections({ commit }) {
         try {
-            const response = await instance.get("/api/okved_sections/");
+            const response = await instance.get("/api/okved_sections");
             if (response) return commit("setData", response.data);
         }
         catch (error) {
@@ -30,7 +30,7 @@ export default {
     async createOkvedSection({}, input) {
         try {
             const { okved_section_name, okved_section_code, img_url } = input;
-            const response = await instance.post("/api/okved_sections/", { okved_section_name, okved_section_code, img_url });
+            const response = await instance.post("/api/okved_sections", { okved_section_name, okved_section_code, img_url });
             if (response.ok) return console.log("ok");
         }
         catch (error) {
