@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <!-- Hero Section -->
+    <!-- Герой-секция -->
     <v-sheet
       class="hero-section"
       color="surface-light"
@@ -9,38 +9,33 @@
     >
       <v-row class="fill-height" align="center" justify="center">
         <v-col cols="12" md="8" class="text-center">
-          <h1 class="display-2 font-weight-bold">
-            AI-Powered Forecasts<br />for Perm Region’s Workforce
+          <h1 class="display-2 font-weight-bold text-white">
+            Прогнозирование кадровой потребности<br />Пермского края
           </h1>
-          <p class="subtitle-1 mt-4">
-            Collect, analyze, and predict regional staffing needs seamlessly,  
-            guided by the Perm Region Development Programme.
+          <p class="subtitle-1 mt-4 text-white">
+            Сбор, анализ и прогнозирование потребности в кадрах  
+            в соответствии с Программой развития Пермского края.
           </p>
-          <v-btn large color="primary" class="mt-6" to="/dashboard">
-            Get Started
+          <v-btn large color="primary" class="mt-6" to="/okved">
+            Начать
           </v-btn>
         </v-col>
       </v-row>
     </v-sheet>
 
-    <!-- Features -->
+    <!-- Особенности -->
     <v-container max-width="1000">
       <v-row>
-        <v-col  v-for="feat in features" :key="feat.title">
+        <v-col v-for="feat in features" :key="feat.title">
           <v-card outlined height="150px" max-width="300px" class="mx-2">
             <v-card-title class="headline">{{ feat.title }}</v-card-title>
             <v-card-text>{{ feat.desc }}</v-card-text>
-
           </v-card>
         </v-col>
       </v-row>
     </v-container>
   </v-container>
-   
-
-
 </template>
-
 
 <script>
 import { mapState } from "vuex";
@@ -51,28 +46,28 @@ export default {
     return {
       features: [
         {
-          title: "Data Collection",
+          title: "Сбор данных",
           desc:
-            "Automate the gathering of demographic, educational, and economic indicators across the region.",
+            "Автоматизация сбора демографических, образовательных и экономических показателей.",
           link: "/features/collection",
         },
         {
-          title: "Data Analysis",
+          title: "Анализ данных",
           desc:
-            "Leverage AI to clean, visualize, and interpret workforce trends in real time.",
+            "Использование ИИ для очистки, визуализации и интерпретации трендов на рынке труда в режиме реального времени.",
           link: "/features/analysis",
         },
         {
-          title: "Forecasting",
+          title: "Прогнозирование",
           desc:
-            "Generate accurate projections of staffing needs aligned with the development programme.",
+            "Разработка прогнозов потребности в кадрах в соответствии с программой развития.",
           link: "/features/forecasting",
         },
       ],
     };
   },
   computed: {
-   
+
   },
 };
 </script>
@@ -82,7 +77,7 @@ export default {
   background: linear-gradient(
     135deg,
     rgba(75, 172, 252, 0.829),
-    rgba(0, 67, 168, 0.8)
+    rgba(0, 49, 122, 0.8)
   );
   color: white;
 }
