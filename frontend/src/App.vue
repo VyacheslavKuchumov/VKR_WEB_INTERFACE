@@ -111,11 +111,11 @@
         <router-view />
       </v-container>
     </v-main>
-    <v-footer padless color="grey lighten-4">
+    <!-- <v-footer padless color="grey lighten-4">
       <v-col class="text-center py-4" cols="12">
         © {{ new Date().getFullYear() }} Perm HR Forecast 
       </v-col>
-    </v-footer>
+    </v-footer> -->
   </v-app>
   
 </template>
