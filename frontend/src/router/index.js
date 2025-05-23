@@ -18,7 +18,7 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
-    meta: { auth: true },
+    // meta: { auth: true },
   },
   {
     path: "/register",

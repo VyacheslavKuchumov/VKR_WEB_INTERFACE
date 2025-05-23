@@ -95,7 +95,7 @@ export default {
             localStorage.removeItem ('accessToken')
             localStorage.removeItem ('refreshToken')
             localStorage.removeItem ('username')
-            router.push('/login')
+            router.push('/')
             return
         }
     },

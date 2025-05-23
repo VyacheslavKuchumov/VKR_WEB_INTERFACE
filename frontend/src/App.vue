@@ -1,30 +1,37 @@
 <template>
   <v-app>
 
-      <v-navigation-drawer v-if="isAuth && !$vuetify.display.mobile" expand-on-hover rail>
-        <v-list>
+      <v-navigation-drawer v-if="!$vuetify.display.mobile" expand-on-hover rail>
+        <!-- <v-list v-if="isAuth">
           <v-list-item
             prepend-icon="mdi-account"
             subtitle="Logged in as"
           >
           <v-list-item-title>
-            {{ user() ? user().name : "что то пошло не так..." }}
+            {{ user() ? user().name : "неавторизован" }}
           </v-list-item-title>
             
         </v-list-item>
         </v-list>
 
-        <v-divider></v-divider>
+        <v-divider></v-divider> -->
 
         <v-list density="compact" nav>
           <v-list-item 
-            v-if="isAuth"
             to="/"
             prepend-icon="mdi-home"
             title="Главная"
             value="home">
             
           </v-list-item>
+          <v-list-item
+            v-if="!isAuth"   
+            to="/login"
+            prepend-icon="mdi-login"
+            title="Авторизация">
+
+          </v-list-item>
+
           
           <v-list-item 
             v-if="isAuth" 
@@ -59,7 +66,7 @@
 
     
     <v-app-bar v-if="$vuetify.display.mobile"  color="primary">
-      <v-app-bar-nav-icon v-if="isAuth" @click="drawer = !drawer" />
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-toolbar-title @click="this.$router.push(`/`);">Статистика</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -75,8 +82,12 @@
     >
       <v-list>
         
-          <v-list-item v-if="isAuth" to="/">
+          <v-list-item to="/">
             <v-list-item-title>Главная</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item v-if="!isAuth" to="/login">
+            <v-list-item-title>Авторизация</v-list-item-title>
           </v-list-item>
           
           <v-list-item v-if="isAuth" to="/okved">
@@ -95,12 +106,18 @@
         
       </v-list>
     </v-navigation-drawer>
-    <v-main>
+    <v-main height="100vh">
       <v-container>
         <router-view />
       </v-container>
     </v-main>
+    <v-footer padless color="grey lighten-4">
+      <v-col class="text-center py-4" cols="12">
+        © {{ new Date().getFullYear() }} Perm HR Forecast 
+      </v-col>
+    </v-footer>
   </v-app>
+  
 </template>
 
 <script>
