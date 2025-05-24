@@ -7,7 +7,7 @@ class OkvedSection(Base):
     __tablename__ = "okved_section"
 
     id = Column(BigInteger, primary_key=True, index=True)
-    okved_section_code = Column(Text, nullable=False, unique=True)
+    okved_section_code = Column(Text, nullable=True)
     okved_section_name = Column(Text, nullable=False)
     img_url = Column(Text, nullable=True)
     

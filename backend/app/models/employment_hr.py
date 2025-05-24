@@ -7,7 +7,7 @@ class EmploymentHr(Base):
 
     id = Column(BigInteger, primary_key=True, index=True)
     date = Column(Date, nullable=False)
-    salary = Column(Float, nullable=False)
+    # salary = Column(Float, nullable=False)
     number_of_vacancies = Column(Integer, nullable=False)
     
     # Foreign key that references the OKVED section.

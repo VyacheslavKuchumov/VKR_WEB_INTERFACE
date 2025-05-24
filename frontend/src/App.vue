@@ -40,18 +40,26 @@
             title="ОКВЭД"
             value="okved">
           </v-list-item>
-          <v-list-item 
+          <!-- <v-list-item 
             v-if="isAuth"
             to="/employment_minstat"
             prepend-icon="mdi-chart-bar"
             title="Графики">
+          </v-list-item> -->
+          <v-list-item 
+            v-if="isAuth" 
+            to="/okved/edit"
+            prepend-icon="mdi-file-edit"
+            title="Редактирование (ОКВЭД)">
           </v-list-item>
           <v-list-item 
             v-if="isAuth" 
-            to="/edit_minstat_data"
+            to="/employment_minstat/edit"
             prepend-icon="mdi-file-edit"
             title="Редактирование (МинСтат)">
           </v-list-item>
+
+
           
           <v-list-item 
             v-if="isAuth" 

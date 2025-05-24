@@ -6,19 +6,19 @@ class EmploymentMinstatCreate(BaseModel):
     year: int
     number_of_employees: float
     okved_section_id: int
-    salary: float
+    # salary: float
 
 class EmploymentMinstatUpdate(BaseModel):
     year: int
     number_of_employees: float
     okved_section_id: int
-    salary: float
+    # salary: float
         
 class EmploymentMinstatOut(BaseModel):
     id: int
     year: int
     number_of_employees: float
-    salary: float
+    # salary: float
 
 
 

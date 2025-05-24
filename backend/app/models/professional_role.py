@@ -7,8 +7,8 @@ class ProfessionalRole(Base):
     __tablename__ = "professional_role"
 
     id = Column(BigInteger, primary_key=True, index=True)
-    professional_role_name = Column(Text, nullable=False, unique=True)
-    
+    professional_role_name = Column(Text, nullable=False)
+    professional_role_code = Column(Text, nullable=True)
     okved_section_id = Column(BigInteger, ForeignKey("okved_section.id"), nullable=False)
     
     

@@ -8,6 +8,7 @@ import Login from "@/views/Auth/Login.vue";
 
 
 import OkvedSectionsView from "@/views/okved/OkvedSectionsView.vue";
+import EditOkvedSectionsView from "@/views/okved/EditOkvedSectionsView.vue";
 import EmploymentMinstatView from "@/views/Stats/EmploymentMinstatView.vue";
 import EditMinstatDataView from "@/views/Stats/EditMinstatDataView.vue";
 
@@ -37,13 +38,19 @@ const routes = [
     meta: { auth: true },
   },
   {
+    path: "/okved/edit",
+    name: "edit_okved_sections",
+    component: EditOkvedSectionsView,
+    meta: { auth: true },
+  },
+  {
     path: "/employment_minstat",
     name: "employment_minstat",
     component: EmploymentMinstatView,
     meta: { auth: true },
   },
   {
-    path: "/edit_minstat_data",
+    path: "/employment_minstat/edit",
     name: "edit_minstat_data",
     component: EditMinstatDataView,
     meta: { auth: true },

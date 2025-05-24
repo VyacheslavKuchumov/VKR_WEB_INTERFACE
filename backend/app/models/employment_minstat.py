@@ -9,7 +9,7 @@ class EmploymentMinstat(Base):
     id = Column(BigInteger, primary_key=True, index=True)
     year = Column(Integer, nullable=False)
     number_of_employees = Column(Float, nullable=False)
-    salary = Column(Float, nullable=False)
+    # salary = Column(Float, nullable=False)
     
     # Foreign key that references the OKVED section.
     okved_section_id = Column(BigInteger, ForeignKey("okved_section.id"), nullable=False)

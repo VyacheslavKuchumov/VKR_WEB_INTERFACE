@@ -5,20 +5,20 @@ from app.schemas.employment_minstat import EmploymentMinstatOut
 
 
 class OkvedSectionCreate(BaseModel):
-    okved_section_code: str
     okved_section_name: str
+    okved_section_code: Optional[str] = None
     img_url: Optional[str] = None
 
 class OkvedSectionUpdate(BaseModel):
-    okved_section_code: str
     okved_section_name: str
+    okved_section_code: Optional[str] = None
     img_url: Optional[str] = None
     
 
 class OkvedSectionOut(BaseModel):
     id: int
-    okved_section_code: str
     okved_section_name: str
+    okved_section_code: Optional[str] = None
     img_url: Optional[str] = None
     
     employment_minstat: Optional[list[EmploymentMinstatOut]] = None
