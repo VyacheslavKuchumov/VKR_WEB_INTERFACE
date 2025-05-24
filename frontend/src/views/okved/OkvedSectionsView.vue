@@ -1,19 +1,30 @@
 <template>
   
   <v-container>
+
     
-    
-    <v-container v-if="okvedSections() && okvedSections().length" max-width="900">
+    <v-container v-if="okvedSections() && okvedSections().length" max-width="1200">
       <v-row 
         
       >
         <v-col v-for="item in okvedSections()"
         :key="item.id">
-          <v-card class="ma-2" max-width="300">
+          <v-card class="ma-2" max-width="400" min-width="300">
             <!-- Event Image with Title Overlay -->
-            <v-img :src="item.img_url" min-height="150px"  class="white--text align-end">
+            <!-- <v-img :src="item.img_url" min-height="150px"  class="white--text align-end">
               
-            </v-img>
+            </v-img> -->
+
+            <v-sparkline
+              :labels="getLabels(item.employment_minstat)"
+              :model-value="getGraphData(item.employment_minstat)"
+              color="primary"
+              height="200"
+              line-width="2"
+              padding="16"
+              class="mb-4"
+              smooth
+            ></v-sparkline>
             <v-card-title class="text-wrap">{{ item.okved_section_name }}</v-card-title>
             <v-card-subtitle class="text-wrap">{{ item.okved_section_code }}</v-card-subtitle>
             <v-card-text>
@@ -119,6 +130,14 @@ export default {
       updateOkvedSection: "okved/updateOkvedSection",
       deleteOkvedSection: "okved/deleteOkvedSection",
     }),
+
+    getLabels(employments) {
+      return employments.map(e => e.year.toString());
+    },
+    // Helper: Extract graph data (e.g., average salary) for the graph
+    getGraphData(employments) {
+      return employments.map(e => e.number_of_employees);
+    },
 
     goToPage(section) {
       this.$router.push({ name: "okved-classes", params: { id: section.id } });
