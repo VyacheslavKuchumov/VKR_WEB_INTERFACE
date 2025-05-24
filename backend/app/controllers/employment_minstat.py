@@ -16,7 +16,7 @@ def create_employment_minstat(db: Session, employment_minstat: EmploymentMinstat
         year=employment_minstat.year,
         number_of_employees=employment_minstat.number_of_employees,
         okved_section_id=employment_minstat.okved_section_id,
-        salary=employment_minstat.salary
+        # salary=employment_minstat.salary
     )
     db.add(db_employment_minstat)
     db.commit()
@@ -30,7 +30,7 @@ def update_employment_minstat(db: Session, employment_minstat_id: int, employmen
     db_employment_minstat.year = employment_minstat.year
     db_employment_minstat.number_of_employees = employment_minstat.number_of_employees
     db_employment_minstat.okved_section_id = employment_minstat.okved_section_id
-    db_employment_minstat.salary = employment_minstat.salary
+    # db_employment_minstat.salary = employment_minstat.salary
     db.commit()
     db.refresh(db_employment_minstat)
     return db_employment_minstat

@@ -10,7 +10,7 @@ def get_employment_hr(db: Session):
 def create_employment_hr(db: Session, employment_hr: EmploymentHrCreate):
     db_employment_hr = EmploymentHr(
         date=employment_hr.date,
-        salary=employment_hr.salary,
+        # salary=employment_hr.salary,
         number_of_vacancies=employment_hr.number_of_vacancies,
         professional_role_id=employment_hr.professional_role_id
     )
@@ -23,7 +23,7 @@ def create_employment_hr(db: Session, employment_hr: EmploymentHrCreate):
 def update_employment_hr(db: Session, employment_hr_id: int, employment_hr: EmploymentHrUpdate):
     db_employment_hr = db.query(EmploymentHr).filter(EmploymentHr.id == employment_hr_id).first()
     db_employment_hr.date = employment_hr.date
-    db_employment_hr.salary = employment_hr.salary
+    # db_employment_hr.salary = employment_hr.salary
     db_employment_hr.number_of_vacancies = employment_hr.number_of_vacancies
     db_employment_hr.professional_role_id = employment_hr.professional_role_id
     db.commit()
