@@ -28,6 +28,11 @@
       <v-row>
         <v-col v-for="feat in features" :key="feat.title">
           <v-card outlined height="150px" max-width="300px" class="mx-2">
+            <!-- <v-img
+              :src="feat.img"
+              min-height="150px"  class="white--text align-end"
+            >
+            </v-img> -->
             <v-card-title class="headline">{{ feat.title }}</v-card-title>
             <v-card-text>{{ feat.desc }}</v-card-text>
           </v-card>
@@ -49,19 +54,19 @@ export default {
           title: "Сбор данных",
           desc:
             "Автоматизация сбора демографических, образовательных и экономических показателей.",
-          link: "/features/collection",
+          img: "https://positivethinking.tech/wp-content/uploads/2020/12/Data_volume_Big_Analytics_Streaming_France_Belgium_Luxembourg_Switzerland_Germany_Positive_Thinking_Company-800x480.jpg",
         },
         {
           title: "Анализ данных",
           desc:
             "Использование ИИ для очистки, визуализации и интерпретации трендов на рынке труда в режиме реального времени.",
-          link: "/features/analysis",
+          img: "https://analyzing-testing.netzsch.com/_Resources/Persistent/4/d/4/e/4d4ea9e36c3524300b40aa2ee2c37cf85ca4876d/NETZSCH_Data-Science_Big-Data-scaled-1847x1038-1600x899.webp",
         },
         {
           title: "Прогнозирование",
           desc:
             "Разработка прогнозов потребности в кадрах в соответствии с программой развития.",
-          link: "/features/forecasting",
+          img: "https://www.devoteam.com/wp-content/uploads/2024/09/data-service.jpg",
         },
       ],
     };

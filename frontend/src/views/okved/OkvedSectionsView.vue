@@ -18,7 +18,7 @@
             <v-card-subtitle class="text-wrap">{{ item.okved_section_code }}</v-card-subtitle>
             <v-card-text>
               <v-btn class="mb-2" elevated block color="primary">Статистика</v-btn>
-              <v-btn class="mb-2" tonal block color="primary">Профессии</v-btn>
+              <v-btn class="mb-2" variant="tonal" block color="primary">Профессии</v-btn>
             </v-card-text>
 
             <!-- Action Buttons -->
