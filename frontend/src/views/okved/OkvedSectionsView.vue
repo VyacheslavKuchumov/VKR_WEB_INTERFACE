@@ -4,9 +4,7 @@
 
     
     <v-container v-if="okvedSections() && okvedSections().length" max-width="1200">
-      <v-row 
-        
-      >
+      <v-row>
         <v-col v-for="item in okvedSections()"
         :key="item.id">
           <v-card class="ma-2" max-width="400" min-width="300">
