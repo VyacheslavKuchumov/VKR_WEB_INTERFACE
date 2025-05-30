@@ -54,15 +54,15 @@ services:
 
 ###########################################
 ###########################################
-  mongo_db:
-    image: mongo:latest
-    env_file:
-      - .env
-    # environment:
-    volumes:
-      - mongo_data:/data/db
-    ports:
-      - "27017:27017"
+  # mongo_db:
+  #   image: mongo:latest
+  #   env_file:
+  #     - .env
+  #   # environment:
+  #   volumes:
+  #     - mongo_data:/data/db
+  #   ports:
+  #     - "27017:27017"
 
 
 
