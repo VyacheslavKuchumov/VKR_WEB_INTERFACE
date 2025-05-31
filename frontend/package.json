@@ -10,6 +10,7 @@
     "@date-io/core": "^3.0.0",
     "@date-io/dayjs": "^3.0.0",
     "@mdi/font": "^7.4.47",
+    "@panzoom/panzoom": "^4.6.0",
     "axios": "^1.6.7",
     "dayjs": "^1.11.13",
     "vue": "^3.2.13",
